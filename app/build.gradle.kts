@@ -12,7 +12,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.android1000sabores"
+        applicationId = "com.example.pasteleria1000sabores"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -79,4 +79,8 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
+
+    //Viewmodel - Lifecycle - Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+
 }

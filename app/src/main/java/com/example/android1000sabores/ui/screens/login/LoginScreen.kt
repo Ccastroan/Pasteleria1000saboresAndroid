@@ -1,6 +1,7 @@
 package com.example.android1000sabores.ui.screens.login
 
 
+import android.R
 import androidx.compose.runtime.Composable
 import android.widget.Toast //mensajes emergentes.
 import androidx.compose.foundation.layout.* //diseño.
@@ -16,6 +17,10 @@ import androidx.compose.ui.unit.dp //Controlas el tamaño de los elementos en dp
 import androidx.compose.ui.graphics.Color//Controlar el color de los elementos
 import androidx.compose.ui.input.key.Key
 
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.android1000sabores.viewmodel.LoginViewModel
+
+
 
 @Composable
 fun LoginScreen() {
@@ -23,10 +28,25 @@ fun LoginScreen() {
     val context = LocalContext.current
 
     //variable para almacenar el nombre de usuario.
-    var user by remember { mutableStateOf("") }
+    var correo by remember { mutableStateOf("") }
 
     //variable para almacenar la contraseña.
     var pass by remember { mutableStateOf("") }
+
+    var viewModel: LoginViewModel = viewModel()
+    val user by viewModel.user.collectAsState()
+    val carga by viewModel.carga.collectAsState()
+
+    //observar cuando el usuario este logeado
+    LaunchedEffect(user){
+        user?.let {
+            val mensaje = when (it.rol){
+                "admin" -> "Bienvenido Administrador ${it.nombre}"
+                else -> "Bienvenido ${it.nombre}"
+            }
+            Toast.makeText(context, mensaje, Toast.LENGTH_LONG).show()
+        }
+    }
 
     //configuracion para organizar los elementos de la panmtalla usando el component column.
     Column(
@@ -49,9 +69,9 @@ fun LoginScreen() {
 
         OutlinedTextField(
             //variable para el nombre de usuario.
-            value = user,
-            onValueChange = { user = it },
-            label = { Text("Usuario", color = Color(color = 0xFF15A0B2)) },
+            value = correo,
+            onValueChange = { correo = it },
+            label = { Text("Correo", color = Color(color = 0xFF15A0B2)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
         )
@@ -70,11 +90,20 @@ fun LoginScreen() {
         //componente Button para el boton de iniciar sesión.)
         Button(
             onClick = {
-                Toast.makeText(context,"Bienvenido $user", Toast.LENGTH_SHORT).show()
+             if (correo.isEmpty()|| pass.isEmpty()){
+                 Toast.makeText(context, "Por favor ingrese correo y clave", Toast.LENGTH_LONG).show()
+                 return@Button
+             }
+                viewModel.login(correo, pass)
             },
             modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors( Color(color = 0xFF1734D5))
-        ) {
+            colors = ButtonDefaults.buttonColors( Color(color = 0xFF1734D5)),
+            enabled = !carga
+        )
+        {
+            if(carga){
+                CircularProgressIndicator(modifier = Modifier.size(16.dp), color = Color.Gray)
+            }
             Text("Entrar", color = Color.White)
         }
 
