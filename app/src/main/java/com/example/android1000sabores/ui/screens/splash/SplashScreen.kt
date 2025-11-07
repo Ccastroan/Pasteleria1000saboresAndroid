@@ -1,7 +1,6 @@
 package com.example.android1000sabores.ui.screens.splash
 
 // Importaciones necesarias para la animación y Composable
-import android.window.SplashScreen
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.keyframes

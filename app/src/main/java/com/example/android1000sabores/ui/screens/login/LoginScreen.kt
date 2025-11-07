@@ -1,7 +1,6 @@
 package com.example.android1000sabores.ui.screens.login
 
 
-import android.R
 import androidx.compose.runtime.Composable
 import android.widget.Toast //mensajes emergentes.
 import androidx.compose.foundation.layout.* //diseño.
@@ -15,7 +14,6 @@ import androidx.compose.ui.text.input.KeyboardType//Controlar el tipo de entrada
 import androidx.compose.ui.text.input.PasswordVisualTransformation //ocultar contraseña al escribirla.
 import androidx.compose.ui.unit.dp //Controlas el tamaño de los elementos en dp.
 import androidx.compose.ui.graphics.Color//Controlar el color de los elementos
-import androidx.compose.ui.input.key.Key
 
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.android1000sabores.viewmodel.LoginViewModel
@@ -44,8 +42,9 @@ fun LoginScreen() {
                 "admin" -> "Bienvenido Administrador ${it.nombre}"
                 else -> "Bienvenido ${it.nombre}"
             }
-            Toast.makeText(context, mensaje, Toast.LENGTH_LONG).show()
+            Toast.makeText(context,mensaje, Toast.LENGTH_SHORT).show()
         }
+
     }
 
     //configuracion para organizar los elementos de la panmtalla usando el component column.
@@ -91,7 +90,7 @@ fun LoginScreen() {
         Button(
             onClick = {
              if (correo.isEmpty()|| pass.isEmpty()){
-                 Toast.makeText(context, "Por favor ingrese correo y clave", Toast.LENGTH_LONG).show()
+                 Toast.makeText(context, "Por favor ingrese correo y clave", Toast.LENGTH_SHORT).show()
                  return@Button
              }
                 viewModel.login(correo, pass)

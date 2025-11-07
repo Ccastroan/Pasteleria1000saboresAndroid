@@ -12,7 +12,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.pasteleria1000sabores"
+        applicationId = "com.example.android1000sabores"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

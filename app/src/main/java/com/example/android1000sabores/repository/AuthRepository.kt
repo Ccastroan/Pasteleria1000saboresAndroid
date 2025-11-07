@@ -1,6 +1,5 @@
 package com.example.android1000sabores.repository
 
-import androidx.compose.ui.text.font.Font
 import com.example.android1000sabores.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "44093437459",
-    "project_id": "pasteleria1000sabores-f47e5",
-    "storage_bucket": "pasteleria1000sabores-f47e5.firebasestorage.app"
+    "project_number": "219108703163",
+    "project_id": "android1000sabores-2b7e7",
+    "storage_bucket": "android1000sabores-2b7e7.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:44093437459:android:4ccaaedd9610b4ef2e31e6",
+        "mobilesdk_app_id": "1:219108703163:android:054fbb37ad050eca42629e",
         "android_client_info": {
-          "package_name": "com.example.pasteleria1000sabores"
+          "package_name": "com.example.android1000sabores"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDr1WAGWX61SMMoF83AQEe7TvG1-DfXHQE"
+          "current_key": "AIzaSyCDqw2yVdhVqLtG8fn80eLp1ZZ37jyFTmM"
         }
       ],
       "services": {
